@@ -11,8 +11,24 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 
 
-class ImageAdapter (val_context : Context, _imageObjects: Array<ImageObject>): BaseAdapter()
+class ImageAdapter (val _context : Context, _imageObjects: Array<ImageObject>): BaseAdapter()
 {
-    val imageObjects = _imageObjects
-    val
+    val imageObjects = _imageObjects // array for image data (ID and description)
+    val inflater = LayoutInflater.from(_context) // Instantiates layout XML into its views
+
+    override fun getCount(): Int
+    {
+        return imageObjects.size
+    }
+
+    override fun getItem(position : Int) : Any
+    {
+        // return imageObjects.get(position)
+        return imageObjects[position]
+    }
+
+
+
+
+
 }
