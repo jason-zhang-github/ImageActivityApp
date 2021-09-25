@@ -34,10 +34,25 @@ abstract class ImageAdapter(val _context: Context, _images : Array<ImageObject>)
 
     fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View
     {
-        var layout =
-        var description : TextView
-        var image =
+        var layout : View?
 
+        layout = convertView
+
+        /* if (convertView is ConstraintLayout)
+        {
+            layout = convertView
+        }
+
+        else
+        {
+            layout = inflater.Inflate(R.layout.recyclerView, null)
+        } */
+
+        var description = layout.findViewById<TextView>(R.id.textView)
+        var imageView = layout.findViewById<ImageView>(R.id.imageView)
+
+        imageView.setImageResource(images[position].resourceID)
+        description.text = images[position].description
     }
 
 
