@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 
-abstract class ImageAdapter(val _context: Context, _images : Array<ImageObject>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
+class ImageAdapter(val _context: Context, val _images : Array<ImageObject>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
     val images = _images // image dataset
     val inflater = LayoutInflater.from(_context)
@@ -38,21 +38,23 @@ abstract class ImageAdapter(val _context: Context, _images : Array<ImageObject>)
 
         layout = convertView
 
-        /* if (convertView is ConstraintLayout)
+        if (convertView is ConstraintLayout)
         {
             layout = convertView
         }
 
         else
         {
-            layout = inflater.Inflate(R.layout.recyclerView, null)
-        } */
+            layout = inflater.inflate(R.layout.activity_main, null)
+        }
 
-        var description = layout.findViewById<TextView>(R.id.textView)
-        var imageView = layout.findViewById<ImageView>(R.id.imageView)
+        val description = layout.findViewById<TextView>(R.id.textView)
+        val imageView = layout.findViewById<ImageView>(R.id.imageView)
 
         imageView.setImageResource(images[position].resourceID)
         description.text = images[position].description
+
+        return layout
     }
 
 
