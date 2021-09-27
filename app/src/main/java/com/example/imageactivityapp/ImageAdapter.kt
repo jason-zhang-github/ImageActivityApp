@@ -11,15 +11,43 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 
-class ImageAdapter(val _context: Context, val _images : Array<ImageObject>) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
+class ImageAdapter(val _context: Context, val _images : Array<ImageObject>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>()
 {
+
+    // public ImageAdapter.MyViewHolder onCreateViewHolder
+
+    /* override fun ImageAdapter.MyViewHolder onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        TODO("Not yet implemented")
+        val itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_layout, parent, false)
+        MyViewHolder holder = new MyViewHolder(itemView)
+        return holder
+    } */
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    {
+        init
+        {
+            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        }
+    }
+
     val images = _images // image dataset
     val inflater = LayoutInflater.from(_context)
 
-    override fun getItemCount(): Int
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
     {
-        return images.size
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recycler_layout, parent, false)
+
+        return ViewHolder(view)
     }
+
+    override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int, imageList : ArrayList<ImageObject>)
+    {
+        // viewHolder.textView.text = _images[position]
+    }
+
+    override fun getItemCount() = _images.size
 
     fun getItem(position : Int) : Any
     {
@@ -35,8 +63,6 @@ class ImageAdapter(val _context: Context, val _images : Array<ImageObject>) : Re
     fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View
     {
         var layout : View
-
-        layout = convertView
 
         if (convertView is ConstraintLayout)
         {
@@ -56,8 +82,6 @@ class ImageAdapter(val _context: Context, val _images : Array<ImageObject>) : Re
 
         return layout
     }
-
-
 
 
 
