@@ -34,7 +34,7 @@ class ImageAdapter(val _context: Context, val _images : Array<ImageObject>) : Re
 
     fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View
     {
-        var layout : View?
+        var layout : View
 
         layout = convertView
 
