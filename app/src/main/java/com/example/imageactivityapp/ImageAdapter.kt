@@ -11,7 +11,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 
-class ImageAdapter(val _context: Context, val _images : Array<ImageObject>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>()
+/**/
+
+class ImageAdapterval (val _imageList : ArrayList<ImageObject>, val click : (ImageObject) -> Unit) : RecyclerView.Adapter<ImageAdapter.ImageHolder>()
 {
 
     // public ImageAdapter.MyViewHolder onCreateViewHolder
@@ -23,28 +25,43 @@ class ImageAdapter(val _context: Context, val _images : Array<ImageObject>) : Re
         return holder
     } */
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    class ImageViewHolder(_imageView: View) : RecyclerView.ViewHolder(_imageView)
     {
-        init
+        fun bind(imageOb : ImageObject, clickListener : (ImageObject) -> Unit)
         {
-            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+            _imageView.tv_part_item_name.text = imageOb.itemName
+            _imageView.tv_part_id.text = imageOb.Id.toString()
+            _imageView.setOnClickListener { clickListener(imageOb)}
         }
     }
 
-    val images = _images // image dataset
-    val inflater = LayoutInflater.from(_context)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-    {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_layout, parent, false)
-
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageAdapter.ImageHolder {
+        TODO("Not yet implemented")
     }
 
-    override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int, imageList : ArrayList<ImageObject>)
+    override fun onBindViewHolder(holder: ImageAdapter.ImageHolder, position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getItemCount(): Int {
+        return _imageList.size
+    }
+
+    // val images = _images // image dataset
+   // val inflater = LayoutInflater.from(_context)
+    /*
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
     {
-        // viewHolder.textView.text = _images[position]
+        val imageView = ImageView(parent.context)
+                return ImageViewHolder(imageView)
+            //.inflate(R.layout.recycler_layout, parent, false)
+
+        return ViewHolder(imageView)
+    }
+
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int)
+    {
+        // viewHolder.imageView = _images[position]
     }
 
     override fun getItemCount() = _images.size
@@ -82,25 +99,7 @@ class ImageAdapter(val _context: Context, val _images : Array<ImageObject>) : Re
 
         return layout
     }
-
+    */
 
 
 }
-
-/* Doesn't inherit from RecyclerView.Adapter
-class ImageAdapter (val _context : Context, _imageObjects: Array<ImageObject>): BaseAdapter()
-{
-    val imageObjects = _imageObjects // array for image data (ID and description)
-    val inflater = LayoutInflater.from(_context) // Instantiates layout XML into its views
-
-    override fun getCount(): Int
-    {
-        return imageObjects.size
-    }
-
-    override fun getItem(position : Int) : Any
-    {
-        // return imageObjects.get(position)
-        return imageObjects[position]
-    }
-*/
