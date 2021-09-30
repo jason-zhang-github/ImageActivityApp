@@ -23,7 +23,7 @@ class ImageAdapter (val _imageList : List<ImageObject>) : RecyclerView.Adapter<I
         var imageVal: ImageView
 
         init {
-            imageVal = _imageView.findViewById(R.id.imageView3)
+            imageVal = _imageView.findViewById(R.id.imageView3) //assigns imageview from layout to the holder
 
                 /* _imageView.setOnClickListener {
                 current?.let { onClick(it) } */
@@ -41,7 +41,7 @@ class ImageAdapter (val _imageList : List<ImageObject>) : RecyclerView.Adapter<I
     {
         var imageInstance = _imageList[position]
 
-        holder.imageVal.setImageDrawable(imageInstance.resourceID)
+        holder.imageVal.setImageResource(imageInstance.resourceID)
     }
 
     override fun getItemCount(): Int {
