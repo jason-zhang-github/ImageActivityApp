@@ -1,15 +1,10 @@
 package com.example.imageactivityapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import android.content.Context
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import android.view.View
 
 /* */
 class MainActivity : AppCompatActivity()
@@ -36,7 +31,13 @@ class MainActivity : AppCompatActivity()
         imageArray.add(ImageObject("Jordan 9", R.drawable.jordan_9))
         imageArray.add(ImageObject("Jordan 10", R.drawable.jordan_10))
 
+        var newAdapter = ImageAdapter(imageArray)
+
+        newAdapter.setOnClickListener(object : ImageAdapter.ClickListener)
+
         recycler.adapter = ImageAdapter(imageArray)
+
+
 
     }
 
