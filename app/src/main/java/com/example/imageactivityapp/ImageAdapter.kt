@@ -13,30 +13,36 @@ import androidx.constraintlayout.widget.ConstraintLayout
 
 /**/
 
-class ImageAdapterval (val _imageList : ArrayList<ImageObject>, val click : (ImageObject) -> Unit) : RecyclerView.Adapter<ImageAdapter.ImageHolder>()
-{
+class ImageAdapter (val _imageList : ArrayList<ImageObject>, val click : (ImageObject) -> Unit) : RecyclerView.Adapter<ImageAdapter.ImageHolder>() {
 
     // public ImageAdapter.MyViewHolder onCreateViewHolder
 
-    /* override fun ImageAdapter.MyViewHolder onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
-        val itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_layout, parent, false)
-        MyViewHolder holder = new MyViewHolder(itemView)
-        return holder
-    } */
+    class ImageHolder(_imageView: View, val onClick: (ImageObject) -> Unit) :
+        RecyclerView.ViewHolder(_imageView) {
+        val imageTextView = _imageView.findViewById<TextView>(R.id.textView)
+        val imageimageView = _imageView.findViewById<ImageView>(R.id.imageView)
+        var current: ImageObject? = null
 
-    class ImageViewHolder(_imageView: View) : RecyclerView.ViewHolder(_imageView)
-    {
-        fun bind(imageOb : ImageObject, clickListener : (ImageObject) -> Unit)
-        {
-            _imageView.tv_part_item_name.text = imageOb.itemName
-            _imageView.tv_part_id.text = imageOb.Id.toString()
-            _imageView.setOnClickListener { clickListener(imageOb)}
+        init {
+            _imageView.setOnClickListener {
+                current?.let { onClick(it) }
+            }
         }
+
+
+    fun bind(image: ImageObject) {
+        current = image
+
+        imageTextView.text = image.description
+
+    }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageAdapter.ImageHolder {
         TODO("Not yet implemented")
+
+        val inflater : View = LayoutInflater.from(parent?.context).inflate(R.layout.recycler_layout)
+        return ImageHolder(inflater)
     }
 
     override fun onBindViewHolder(holder: ImageAdapter.ImageHolder, position: Int) {
