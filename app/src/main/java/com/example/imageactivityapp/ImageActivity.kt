@@ -16,37 +16,30 @@ class MainActivity : AppCompatActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.image_recycler)
 
         val recycler = findViewById<RecyclerView>(R.id.recyclerView) // initialize the recyclerview
         // Set recyclerview's layout manager to a GridlayoutManager with 2 columns (?)
-        recycler.layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
+        recycler.layoutManager = GridLayoutManager(applicationContext, 2)
 
         // Initialize the TextView and the ImageView
-
-        recycler.adapter = ImageAdapter(getData())
-
-    }
-
-    fun getData(): List<ImageObject> // return method that creates ImageObject Array to be displayed
-    {
-
         val imageArray : MutableList<ImageObject> = ArrayList<ImageObject>()
 
+        imageArray.add(ImageObject("Jordan 1", getDrawable(R.drawable.jordan_1)))
+        imageArray.add(ImageObject("Jordan 2", getDrawable(R.drawable.jordan_2)))
+        imageArray.add(ImageObject("Jordan 3", getDrawable(R.drawable.jordan_3)))
+        imageArray.add(ImageObject("Jordan 4", getDrawable(R.drawable.jordan_4)))
+        imageArray.add(ImageObject("Jordan 5", getDrawable(R.drawable.jordan_5)))
+        imageArray.add(ImageObject("Jordan 6", getDrawable(R.drawable.jordan_6)))
+        imageArray.add(ImageObject("Jordan 7", getDrawable(R.drawable.jordan_7)))
+        imageArray.add(ImageObject("Jordan 7", getDrawable(R.drawable.jordan_7)))
+        imageArray.add(ImageObject("Jordan 8", getDrawable(R.drawable.jordan_8)))
+        imageArray.add(ImageObject("Jordan 9", getDrawable(R.drawable.jordan_9)))
+        imageArray.add(ImageObject("Jordan 10", getDrawable(R.drawable.jordan_10)))
 
-        imageArray.add(ImageObject("Jordan 1", R.drawable.jordan_1))
-        imageArray.add(ImageObject("Jordan 2", R.drawable.jordan_2))
-        imageArray.add(ImageObject("Jordan 3", R.drawable.jordan_3))
-        imageArray.add(ImageObject("Jordan 4", R.drawable.jordan_4))
-        imageArray.add(ImageObject("Jordan 5", R.drawable.jordan_5))
-        imageArray.add(ImageObject("Jordan 6", R.drawable.jordan_6))
-        imageArray.add(ImageObject("Jordan 7", R.drawable.jordan_7))
-        imageArray.add(ImageObject("Jordan 7", R.drawable.jordan_7))
-        imageArray.add(ImageObject("Jordan 8", R.drawable.jordan_8))
-        imageArray.add(ImageObject("Jordan 9", R.drawable.jordan_9))
-        imageArray.add(ImageObject("Jordan 10", R.drawable.jordan_10))
+        recycler.adapter = ImageAdapter(imageArray)
 
-        return imageArray
     }
+
 }
 

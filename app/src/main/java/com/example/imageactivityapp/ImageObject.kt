@@ -1,3 +1,5 @@
 package com.example.imageactivityapp
 
-data class ImageObject (var description: String, var resourceID: Int)
+import android.graphics.drawable.Drawable
+
+data class ImageObject (var description: String, var resourceID: Drawable?)
