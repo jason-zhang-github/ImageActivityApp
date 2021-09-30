@@ -13,11 +13,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 
 /**/
 
-class ImageAdapter (val _imageList : ArrayList<ImageObject>) : RecyclerView.Adapter<ImageAdapter.ImageHolder>() {
-
-    // public ImageAdapter.MyViewHolder onCreateViewHolder
-
-    var images = _imageList
+class ImageAdapter (val _imageList : List<ImageObject>) : RecyclerView.Adapter<ImageAdapter.ImageHolder>()
+{
+    // var images = _imageList
 
     class ImageHolder(_imageView: View, /*onClick: (ImageObject) -> Unit*/) :
         RecyclerView.ViewHolder(_imageView)
@@ -33,13 +31,17 @@ class ImageAdapter (val _imageList : ArrayList<ImageObject>) : RecyclerView.Adap
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageAdapter.ImageHolder {
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageAdapter.ImageHolder
+    {
         val inflater : View = LayoutInflater.from(parent.context).inflate(R.layout.image_recycler, parent, false)
         return ImageHolder(inflater)
     }
 
-    override fun onBindViewHolder(holder: ImageAdapter.ImageHolder, position: Int) {
+    override fun onBindViewHolder(holder: ImageAdapter.ImageHolder, position: Int)
+    {
+        var imageInstance = _imageList[position]
+
+        holder.imageVal.setImageResource(imageInstance.resourceID)
     }
 
     override fun getItemCount(): Int {

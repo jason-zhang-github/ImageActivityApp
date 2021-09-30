@@ -23,31 +23,28 @@ class MainActivity : AppCompatActivity()
         recycler.layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
 
         // Initialize the TextView and the ImageView
-        val descriptView = findViewById<TextView>(R.id.textView)
-        val display = findViewById<ImageView>(R.id.imageView)
 
-        recycler.adapter = ImageAdapter(this, getData())
-
-
+        recycler.adapter = ImageAdapter(getData())
 
     }
 
-    fun getData(): Array<ImageObject> // return method that creates ImageObject Array to be displayed
+    fun getData(): List<ImageObject> // return method that creates ImageObject Array to be displayed
     {
 
-        val imageArray = arrayOf(
-            ImageObject("Jordan 1", R.drawable.jordan_1),
-            ImageObject("Jordan 2", R.drawable.jordan_2),
-            ImageObject("Jordan 3", R.drawable.jordan_3),
-            ImageObject("Jordan 4", R.drawable.jordan_4),
-            ImageObject("Jordan 5", R.drawable.jordan_5),
-            ImageObject("Jordan 6", R.drawable.jordan_6),
-            ImageObject("Jordan 7", R.drawable.jordan_7),
-            ImageObject("Jordan 7", R.drawable.jordan_7),
-            ImageObject("Jordan 8", R.drawable.jordan_8),
-            ImageObject("Jordan 9", R.drawable.jordan_9),
-            ImageObject("Jordan 10", R.drawable.jordan_10)
-        )
+        val imageArray : MutableList<ImageObject> = ArrayList<ImageObject>()
+
+
+        imageArray.add(ImageObject("Jordan 1", R.drawable.jordan_1))
+        imageArray.add(ImageObject("Jordan 2", R.drawable.jordan_2))
+        imageArray.add(ImageObject("Jordan 3", R.drawable.jordan_3))
+        imageArray.add(ImageObject("Jordan 4", R.drawable.jordan_4))
+        imageArray.add(ImageObject("Jordan 5", R.drawable.jordan_5))
+        imageArray.add(ImageObject("Jordan 6", R.drawable.jordan_6))
+        imageArray.add(ImageObject("Jordan 7", R.drawable.jordan_7))
+        imageArray.add(ImageObject("Jordan 7", R.drawable.jordan_7))
+        imageArray.add(ImageObject("Jordan 8", R.drawable.jordan_8))
+        imageArray.add(ImageObject("Jordan 9", R.drawable.jordan_9))
+        imageArray.add(ImageObject("Jordan 10", R.drawable.jordan_10))
 
         return imageArray
     }
