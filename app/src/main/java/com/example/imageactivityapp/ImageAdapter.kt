@@ -23,7 +23,7 @@ class ImageAdapter (val _imageList : List<ImageObject>) : RecyclerView.Adapter<I
         var imageVal: ImageView
 
         init {
-            imageVal = _imageView.findViewById(R.id.)
+            imageVal = _imageView.findViewById(R.id.imageView3)
 
                 /* _imageView.setOnClickListener {
                 current?.let { onClick(it) } */
