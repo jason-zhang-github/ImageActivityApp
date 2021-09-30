@@ -17,32 +17,24 @@ class ImageAdapter (val _imageList : ArrayList<ImageObject>, val click : (ImageO
 
     // public ImageAdapter.MyViewHolder onCreateViewHolder
 
-    class ImageHolder(_imageView: View, val onClick: (ImageObject) -> Unit) :
-        RecyclerView.ViewHolder(_imageView) {
-        val imageTextView = _imageView.findViewById<TextView>(R.id.textView)
-        val imageimageView = _imageView.findViewById<ImageView>(R.id.imageView)
-        var current: ImageObject? = null
+    class ImageHolder(_imageView: View, onClick: (ImageObject) -> Unit) :
+        RecyclerView.ViewHolder(_imageView)
+    {
+        var imageVal: ImageView
 
         init {
-            _imageView.setOnClickListener {
-                current?.let { onClick(it) }
+            imageVal = _imageView.findViewById(R.id.image)
+
+                /* _imageView.setOnClickListener {
+                current?.let { onClick(it) } */
             }
-        }
-
-
-    fun bind(image: ImageObject) {
-        current = image
-
-        imageTextView.text = image.description
-
     }
-    }
+}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageAdapter.ImageHolder {
-        TODO("Not yet implemented")
 
-        val inflater : View = LayoutInflater.from(parent?.context).inflate(R.layout.recycler_layout)
-        return ImageHolder(inflater)
+        /*val inflater : View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_layout)
+        return ImageHolder(inflater)*/
     }
 
     override fun onBindViewHolder(holder: ImageAdapter.ImageHolder, position: Int) {

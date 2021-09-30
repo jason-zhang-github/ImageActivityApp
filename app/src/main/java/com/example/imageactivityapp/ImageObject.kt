@@ -1,3 +1,3 @@
 package com.example.imageactivityapp
 
-data class ImageObject (val description: String, val resourceID: Int)
+data class ImageObject (var description: String, var resourceID: Int, var title: String)
